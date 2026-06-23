@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Digital Master Classes — DLT Sessions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+
+/* ── THEME TOKENS ─────────────────────────────── */
+[data-theme="light"] {
+  --bg:          #fdf8f2;
+  --surface:     #ffffff;
+  --surface2:    #faf4ec;
+  --border:      #e8d9c4;
+  --text:        #1e1208;
+  --muted:       #8a7060;
+  --accent:      #7c3aed;
+  --accent2:     #5b21b6;
+  --accent-warm: #ea7c2e;
+  --accent-warm2:#c2611c;
+  --accent-glow: rgba(124,58,237,0.15);
+  --warm-glow:   rgba(234,124,46,0.12);
+  --header-bg:   rgba(12,37,48,0.95);
+  --glow-top:    rgba(124,58,237,0.06);
+  --glow-bot:    rgba(234,124,46,0.07);
+  --search-bg:   #ffffff;
+  --tab-bg:      #f0e8fa;
+  --tab-active-bg: #7c3aed;
+  --pill-staff-bg:   rgba(124,58,237,0.12);
+  --pill-staff-col:  #7c3aed;
+  --pill-staff-bdr:  rgba(124,58,237,0.3);
+  --pill-student-bg:   rgba(234,124,46,0.12);
+  --pill-student-col:  #c2611c;
+  --pill-student-bdr:  rgba(234,124,46,0.35);
+  --pill-both-bg:   rgba(16,185,129,0.1);
+  --pill-both-col:  #0f7a57;
+  --pill-both-bdr:  rgba(16,185,129,0.3);
+}
+
+[data-theme="dark"] {
+  --bg:          #110b1e;
+  --surface:     #1c1230;
+  --surface2:    #241840;
+  --border:      rgba(124,58,237,0.15);
+  --text:        #f0e8ff;
+  --muted:       #7a6898;
+  --accent:      #a78bfa;
+  --accent2:     #7c3aed;
+  --accent-warm: #fb923c;
+  --accent-warm2:#ea7c2e;
+  --accent-glow: rgba(167,139,250,0.2);
+  --warm-glow:   rgba(251,146,60,0.15);
+  --header-bg:   rgba(9,21,32,0.88);
+  --glow-top:    rgba(124,58,237,0.09);
+  --glow-bot:    rgba(234,124,46,0.08);
+  --search-bg:   #1c1230;
+  --tab-bg:      #1c1230;
+  --tab-active-bg: #7c3aed;
+  --pill-staff-bg:   rgba(167,139,250,0.15);
+  --pill-staff-col:  #c4b5fd;
+  --pill-staff-bdr:  rgba(167,139,250,0.3);
+  --pill-student-bg:   rgba(251,146,60,0.15);
+  --pill-student-col:  #fdba74;
+  --pill-student-bdr:  rgba(251,146,60,0.3);
+  --pill-both-bg:   rgba(16,185,129,0.12);
+  --pill-both-col:  #34d399;
+  --pill-both-bdr:  rgba(16,185,129,0.3);
+}
+
+/* ── RESET ──────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 17px;
+  min-height: 100vh;
+  transition: background .3s, color .3s;
+}
+
+body::before {
+  content: '';
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background:
+    radial-gradient(ellipse 65% 50% at 10% -8%, var(--glow-top) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 45% at 90% 108%, var(--glow-bot) 0%, transparent 55%);
+}
+
+/* ── HEADER ─────────────────────────────────── */
+header {
+  position: sticky; top: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 48px; height: 68px;
+  background: var(--header-bg);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+  gap: 16px;
+}
+
+.header-left { display: flex; align-items: center; gap: 20px; }
+
+.logo { display: flex; align-items: center; gap: 12px; }
+.logo-icon {
+  width: 38px; height: 38px;
+  background: linear-gradient(135deg, #a78bfa, #7c3aed);
+  border-radius: 10px; display: grid; place-items: center; font-size: 20px;
+  box-shadow: 0 0 16px rgba(124,58,237,0.4);
+}
+.logo-text { font-weight: 700; font-size: 18px; color: #fff; line-height: 1.2; }
+.logo-text small { display: block; font-size: 11.5px; font-weight: 400; opacity: .45; letter-spacing: .9px; text-transform: uppercase; }
+
+.theme-switch {
+  display: flex; align-items: center; gap: 8px; cursor: pointer; flex-shrink: 0;
+}
+.theme-switch-label { font-size: 13px; user-select: none; }
+.switch-track {
+  width: 42px; height: 24px;
+  background: rgba(255,255,255,0.15);
+  border-radius: 20px; position: relative;
+  border: 1px solid rgba(255,255,255,0.2);
+  transition: background .3s; cursor: pointer;
+}
+[data-theme="dark"] .switch-track { background: var(--accent); border-color: var(--accent); }
+.switch-knob {
+  position: absolute; top: 3px; left: 3px;
+  width: 16px; height: 16px; border-radius: 50%;
+  background: #fff;
+  transition: transform .25s cubic-bezier(.22,1,.36,1);
+}
+[data-theme="dark"] .switch-knob { transform: translateX(18px); }
+
+.header-right { display: flex; align-items: center; gap: 20px; }
+.college-badge { font-size: 15px; color: rgba(255,255,255,0.4); letter-spacing: .3px; }
+.header-back {
+  font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.5);
+  text-decoration: none; display: flex; align-items: center; gap: 6px;
+  transition: color .18s; letter-spacing: .3px;
+}
+.header-back:hover { color: var(--accent); }
+
+/* ── HERO ───────────────────────────────────── */
+.hero {
+  position: relative; z-index: 1;
+  padding: 40px 48px 28px;
+}
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 13px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--accent-warm); margin-bottom: 14px;
+}
+.hero-eyebrow::before { content:''; width: 20px; height: 2px; background: var(--accent-warm); border-radius: 2px; }
+
+h1 {
+  font-size: clamp(28px, 4vw, 46px); font-weight: 800; line-height: 1.1;
+  letter-spacing: -.7px; margin-bottom: 12px;
+}
+h1 em {
+  font-style: normal;
+  background: linear-gradient(90deg, #7c3aed, #ea7c2e);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.hero-sub { color: var(--muted); font-size: 16.5px; max-width: 580px; line-height: 1.65; }
+
+/* ── FILTERS ─────────────────────────────────── */
+.controls {
+  position: relative; z-index: 1;
+  display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+  padding: 0 48px 28px;
+}
+
+.search-wrap { flex: 1; min-width: 180px; max-width: 320px; position: relative; }
+.search-wrap svg { position: absolute; left: 13px; top: 50%; transform: translateY(-50%); color: var(--muted); pointer-events: none; }
+.search {
+  width: 100%; padding: 9px 13px 9px 38px;
+  background: var(--search-bg); border: 1px solid var(--border);
+  border-radius: 10px; color: var(--text); font-size: 15px;
+  font-family: 'Outfit', sans-serif; outline: none;
+  transition: border-color .2s, background .3s;
+}
+.search:focus { border-color: var(--accent); }
+.search::placeholder { color: var(--muted); }
+
+.count-badge { margin-left: auto; font-size: 15px; color: var(--muted); }
+.count-badge strong { color: var(--accent); }
+
+/* ── SESSION CARDS GRID ──────────────────────── */
+.grid {
+  position: relative; z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 28px;
+  padding: 0 48px 80px;
+}
+
+/* ── SESSION CARD ────────────────────────────── */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  display: flex; flex-direction: column;
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease, background .3s;
+  animation: fadeUp .4s both;
+  position: relative; overflow: hidden;
+}
+.card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 20px 48px rgba(0,0,0,0.22), 0 0 0 1px var(--accent2);
+  border-color: var(--accent2);
+  z-index: 10;
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.card:nth-child(1){animation-delay:.05s}
+.card:nth-child(2){animation-delay:.12s}
+.card:nth-child(3){animation-delay:.19s}
+
+/* Accent line at top of card */
+.card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  opacity: 0;
+  transition: opacity .3s;
+}
+.card:hover::before { opacity: 1; }
+.card[data-accent="purple"]::before { background: linear-gradient(90deg, #7c3aed, #a78bfa); }
+.card[data-accent="orange"]::before { background: linear-gradient(90deg, #ea7c2e, #f9a867); }
+.card[data-accent="teal"]::before   { background: linear-gradient(90deg, #0891b2, #22d3ee); }
+
+/* Thumbnail area */
+.card-thumb {
+  height: 160px; position: relative; overflow: hidden;
+  display: flex; align-items: flex-end; padding: 14px;
+  border-radius: 20px 20px 0 0;
+}
+.card-thumb-bg {
+  position: absolute; inset: 0;
+  background-size: cover; background-position: center;
+  transition: transform .4s ease;
+}
+.card:hover .card-thumb-bg { transform: scale(1.04); }
+.card-thumb-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.0) 65%);
+}
+.card-thumb-emoji {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%,-55%);
+  font-size: 44px; filter: drop-shadow(0 4px 12px rgba(0,0,0,0.4));
+  transition: transform .3s;
+}
+.card:hover .card-thumb-emoji { transform: translate(-50%,-55%) scale(1.1); }
+
+/* Who is this for badge */
+.audience-badge {
+  position: absolute; top: 12px; left: 12px;
+  padding: 4px 10px; border-radius: 20px;
+  font-size: 12px; font-weight: 700; letter-spacing: .4px;
+  backdrop-filter: blur(8px);
+}
+.audience-badge.staff   { background: var(--pill-staff-bg); color: var(--pill-staff-col); border: 1px solid var(--pill-staff-bdr); }
+.audience-badge.student { background: var(--pill-student-bg); color: var(--pill-student-col); border: 1px solid var(--pill-student-bdr); }
+.audience-badge.both    { background: var(--pill-both-bg); color: var(--pill-both-col); border: 1px solid var(--pill-both-bdr); }
+
+/* Duration badge */
+.duration-badge {
+  position: absolute; top: 12px; right: 12px;
+  padding: 4px 10px; border-radius: 20px;
+  font-size: 12px; font-weight: 600;
+  background: rgba(0,0,0,0.45); color: rgba(255,255,255,0.92);
+  backdrop-filter: blur(6px);
+  display: flex; align-items: center; gap: 5px;
+}
+
+/* Card body */
+.card-body { padding: 0 22px 8px; flex: 1; display: flex; flex-direction: column; gap: 14px; }
+
+/* Decorative divider between image and heading */
+.card-divider {
+  display: flex; justify-content: center; align-items: center;
+  padding: 14px 0;
+}
+.card-divider::before {
+  content: '';
+  width: 48px; height: 3px;
+  background: var(--border);
+  border-radius: 3px;
+  display: block;
+}
+
+.card-title { font-size: 18px; font-weight: 700; color: var(--text); line-height: 1.3; }
+.card-intro { font-size: 14.5px; color: var(--muted); line-height: 1.65; }
+@keyframes dfade { from{opacity:0;transform:translateY(-3px)} to{opacity:1;transform:none} }
+
+/* Detail sections always visible */
+.detail-section { display: flex; flex-direction: column; gap: 8px; }
+
+.detail-heading {
+  font-size: 11px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase;
+  color: var(--accent-warm); margin-bottom: 2px;
+}
+.detail-list {
+  list-style: none; display: flex; flex-direction: column; gap: 5px;
+}
+.detail-list li {
+  font-size: 13.5px; color: var(--muted); line-height: 1.5;
+  padding-left: 16px; position: relative;
+}
+.detail-list li::before {
+  content: '›'; position: absolute; left: 0;
+  color: var(--accent); font-weight: 700;
+}
+
+/* Meta row */
+.meta-row {
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+  padding-top: 4px; border-top: 1px solid var(--border);
+}
+.meta-chip {
+  display: flex; align-items: center; gap: 5px;
+  font-size: 13px; color: var(--muted);
+}
+.meta-chip svg { opacity: .6; flex-shrink: 0; }
+.meta-chip strong { color: var(--text); font-weight: 600; }
+
+/* Card footer */
+.card-footer {
+  padding: 18px 22px 20px;
+  display: flex; gap: 10px; margin-top: 8px;
+  flex-direction: column;
+}
+
+/* Sign-up group */
+.signup-group { display: flex; gap: 8px; }
+.signup-group .btn-signup { font-size: 13.5px; padding: 10px 10px; }
+
+.btn-signup {
+  flex: 1; padding: 11px 14px;
+  border: none; border-radius: 12px;
+  font-family: 'Outfit', sans-serif; font-size: 14.5px; font-weight: 700;
+  cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 7px;
+  transition: opacity .18s, transform .1s, box-shadow .18s;
+  letter-spacing: .2px; text-decoration: none;
+}
+.btn-signup:hover { opacity: .88; }
+.btn-signup:active { transform: scale(.98); }
+
+.btn-signup.staff-btn {
+  background: linear-gradient(135deg, #7c3aed, #5b21b6);
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(124,58,237,0.3);
+}
+.btn-signup.student-btn {
+  background: linear-gradient(135deg, #ea7c2e, #c2611c);
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(234,124,46,0.3);
+}
+.btn-signup.both-btn {
+  background: linear-gradient(135deg, #0891b2, #0e7490);
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(8,145,178,0.3);
+}
+
+.btn-info {
+  padding: 11px 14px; flex-shrink: 0;
+  background: var(--surface2); border: 1px solid var(--border);
+  border-radius: 12px; color: var(--accent);
+  font-family: 'Outfit', sans-serif; font-size: 14.5px; font-weight: 600;
+  cursor: pointer; display: flex; align-items: center; gap: 6px;
+  white-space: nowrap; transition: border-color .18s, background .18s;
+}
+.btn-info:hover { border-color: var(--accent); background: rgba(124,58,237,0.07); }
+
+/* Hidden until audience toggled for single-audience sessions */
+.card[data-hidden="true"] {
+  opacity: 0.35; pointer-events: none;
+}
+
+/* ── COLLAB BANNER ───────────────────────────── */
+.collab-banner {
+  display: flex; align-items: flex-start; gap: 9px;
+  background: var(--accent-glow);
+  border: 1px solid rgba(124,58,237,0.2);
+  border-left: 3px solid var(--accent);
+  border-radius: 10px;
+  padding: 10px 13px;
+  font-size: 13.5px; font-weight: 500; color: var(--text); line-height: 1.5;
+}
+.collab-banner svg { flex-shrink: 0; margin-top: 2px; color: var(--accent); }
+
+/* ── CURRICULUM TAGS ─────────────────────────── */
+.curriculum-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
+.curr-tag {
+  font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 20px;
+  background: var(--surface2); border: 1px solid var(--border);
+  color: var(--muted); letter-spacing: .2px;
+}
+
+/* ── REQUEST BUTTON ──────────────────────────── */
+.btn-signup.request-btn {
+  background: linear-gradient(135deg, #7c3aed, #5b21b6);
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(124,58,237,0.3);
+  flex: 2;
+}
+.btn-signup.details-btn {
+  background: var(--surface2);
+  color: var(--accent);
+  border: 1px solid var(--border);
+  box-shadow: none;
+  flex: 1;
+}
+.btn-signup.details-btn:hover {
+  border-color: var(--accent);
+  background: var(--accent-glow);
+}
+
+/* ── DETAILS MODAL ───────────────────────────── */
+.modal-overlay {
+  position: fixed; inset: 0; z-index: 200;
+  background: rgba(10,5,20,0.75); backdrop-filter: blur(10px);
+  display: none; justify-content: center; align-items: flex-start;
+  overflow-y: auto;
+}
+.modal-overlay.open { display: flex; animation: mfade .18s ease; }
+@keyframes mfade { from{opacity:0} to{opacity:1} }
+
+.modal {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 24px;
+  width: 860px; max-width: calc(100vw - 48px);
+  margin: 40px auto;
+  display: flex; flex-direction: column;
+  box-shadow: 0 40px 100px rgba(0,0,0,0.5);
+  animation: mslide .22s cubic-bezier(.22,1,.36,1);
+  overflow: hidden;
+}
+@keyframes mslide { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:none} }
+
+.modal-hero {
+  height: 220px; position: relative; overflow: hidden; flex-shrink: 0;
+}
+.modal-hero-bg {
+  position: absolute; inset: 0;
+  background-size: cover; background-position: center;
+}
+.modal-hero-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.1) 70%);
+}
+.modal-hero-title {
+  position: absolute; bottom: 20px; left: 28px; right: 70px;
+  font-size: 24px; font-weight: 800; color: #fff; line-height: 1.25;
+}
+.modal-close {
+  position: absolute; top: 14px; right: 14px;
+  background: rgba(0,0,0,0.45); border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 8px; width: 34px; height: 34px; cursor: pointer;
+  color: #fff; font-size: 16px; display: grid; place-items: center;
+  transition: background .18s; backdrop-filter: blur(6px);
+}
+.modal-close:hover { background: rgba(0,0,0,0.7); }
+
+.modal-body {
+  padding: 28px 32px;
+  display: flex; flex-direction: column; gap: 20px;
+}
+.accordions-wrap { display: flex; flex-direction: column; }
+
+.modal-intro { font-size: 14.5px; color: var(--muted); line-height: 1.7; }
+
+.modal-collab {
+  display: flex; align-items: flex-start; gap: 10px;
+  background: var(--accent-glow); border: 1px solid rgba(124,58,237,0.2);
+  border-left: 3px solid var(--accent); border-radius: 10px;
+  padding: 12px 14px; font-size: 13.5px; color: var(--text); line-height: 1.6;
+}
+.modal-collab svg { flex-shrink: 0; margin-top: 2px; color: var(--accent); }
+
+.modal-section-title {
+  font-size: 11px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase;
+  color: var(--accent-warm); margin-bottom: 10px;
+}
+
+/* Collapsible sections */
+.modal-accordion {
+  border-radius: 12px; overflow: hidden;
+  border: 1px solid var(--border);
+}
+.modal-accordion + .modal-accordion { margin-top: 10px; }
+
+.accordion-trigger {
+  width: 100%; background: var(--surface2); border: none;
+  padding: 16px 20px;
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  cursor: pointer; font-family: 'Outfit', sans-serif;
+  font-size: 14px; font-weight: 600; letter-spacing: .1px;
+  color: var(--text); transition: background .18s; text-align: left;
+}
+.accordion-trigger:hover { background: var(--border); }
+
+.accordion-label { display: flex; align-items: center; gap: 10px; }
+.accordion-label-icon {
+  width: 30px; height: 30px; border-radius: 8px; flex-shrink: 0;
+  background: linear-gradient(135deg, #7c3aed, #5b21b6);
+  display: grid; place-items: center;
+}
+.accordion-label-icon svg { color: #fff; }
+.accordion-label-text { display: flex; flex-direction: column; }
+.accordion-label-text strong { font-size: 14px; font-weight: 700; color: var(--text); }
+.accordion-label-text small { font-size: 12px; color: var(--muted); font-weight: 400; margin-top: 1px; }
+
+.accordion-chevron {
+  flex-shrink: 0; color: var(--muted);
+  transition: transform .25s cubic-bezier(.22,1,.36,1);
+  display: flex; align-items: center;
+}
+.accordion-trigger.open .accordion-chevron { transform: rotate(180deg); }
+
+.accordion-body {
+  max-height: 0; overflow: hidden;
+  transition: max-height .3s cubic-bezier(.22,1,.36,1), padding .3s ease;
+  padding: 0 20px; background: var(--surface);
+}
+.accordion-body.open {
+  max-height: 600px;
+  padding: 20px;
+  border-top: 1px solid var(--border);
+}
+
+.session-steps { display: flex; flex-direction: column; gap: 10px; }
+.session-step {
+  display: flex; gap: 12px; align-items: flex-start;
+}
+.step-num {
+  flex-shrink: 0; width: 28px; height: 28px; border-radius: 50%;
+  background: linear-gradient(135deg, #7c3aed, #5b21b6);
+  color: #fff; font-size: 12px; font-weight: 700;
+  display: grid; place-items: center;
+  box-shadow: 0 2px 8px rgba(124,58,237,0.3);
+}
+.step-content { font-size: 13.5px; color: var(--text); line-height: 1.55; }
+.step-content strong { display: block; font-weight: 600; margin-bottom: 2px; }
+.step-content span { color: var(--muted); }
+
+.modal-list { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+.modal-list li {
+  font-size: 13.5px; color: var(--muted); padding-left: 16px; position: relative; line-height: 1.5;
+}
+.modal-list li::before { content: '›'; position: absolute; left: 0; color: var(--accent); font-weight: 700; }
+
+.modal-curr-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.modal-curr-tag {
+  font-size: 12.5px; font-weight: 600; padding: 5px 12px; border-radius: 20px;
+  background: var(--surface2); border: 1px solid var(--border); color: var(--muted);
+}
+.modal-curr-tag span { color: var(--text); }
+
+.modal-footer {
+  padding: 16px 32px 20px; border-top: 1px solid var(--border);
+  display: flex; gap: 10px; align-items: center;
+  background: var(--surface);
+}
+.modal-footer .btn-signup { font-size: 15px; padding: 13px 18px; }
+.modal-cta-note {
+  font-size: 12.5px; color: var(--muted); line-height: 1.6;
+  text-align: center; padding-top: 4px;
+}
+
+/* ── REQUEST MEETING MODAL ───────────────────── */
+.req-header {
+  display: flex; align-items: center; gap: 14px;
+  padding: 22px 24px; border-bottom: 1px solid var(--border);
+  background: var(--surface2);
+}
+.req-header-icon {
+  width: 44px; height: 44px; border-radius: 12px; flex-shrink: 0;
+  background: linear-gradient(135deg, #7c3aed, #5b21b6);
+  display: grid; place-items: center; color: #fff;
+  box-shadow: 0 4px 12px rgba(124,58,237,0.3);
+}
+.req-header-title { font-size: 17px; font-weight: 700; color: var(--text); }
+.req-header-sub { font-size: 13px; color: var(--muted); margin-top: 2px; }
+.req-close {
+  margin-left: auto; flex-shrink: 0;
+  background: var(--surface); border: 1px solid var(--border); border-radius: 8px;
+  width: 32px; height: 32px; cursor: pointer; color: var(--muted); font-size: 14px;
+  display: grid; place-items: center; transition: border-color .18s, color .18s;
+}
+.req-close:hover { border-color: var(--accent); color: var(--accent); }
+
+.req-body { padding: 24px; display: flex; flex-direction: column; gap: 18px; }
+.req-intro {
+  font-size: 14px; color: var(--muted); line-height: 1.65;
+  padding: 12px 14px; background: var(--surface2);
+  border-radius: 10px; border-left: 3px solid var(--accent);
+}
+
+.req-fields { display: flex; flex-direction: column; gap: 14px; }
+.req-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.req-field { display: flex; flex-direction: column; gap: 6px; }
+.req-label { font-size: 13px; font-weight: 600; color: var(--text); }
+.req-required { color: var(--accent-warm); }
+
+.req-input, .req-textarea {
+  width: 100%; padding: 10px 13px;
+  background: var(--search-bg); border: 1px solid var(--border);
+  border-radius: 10px; color: var(--text);
+  font-family: 'Outfit', sans-serif; font-size: 14px;
+  outline: none; transition: border-color .2s;
+  resize: none;
+}
+.req-input:focus, .req-textarea:focus { border-color: var(--accent); }
+.req-input::placeholder, .req-textarea::placeholder { color: var(--muted); }
+
+.req-error {
+  font-size: 13px; color: #dc2626; font-weight: 500;
+  padding: 10px 13px; background: rgba(220,38,38,0.08);
+  border: 1px solid rgba(220,38,38,0.2); border-radius: 8px;
+}
+
+.req-footer {
+  padding: 16px 24px 22px; border-top: 1px solid var(--border);
+  display: flex; gap: 10px; align-items: center;
+  background: var(--surface);
+}
+.req-cancel-btn {
+  padding: 12px 20px; border-radius: 12px; cursor: pointer;
+  background: var(--surface2); border: 1px solid var(--border);
+  font-family: 'Outfit', sans-serif; font-size: 14.5px; font-weight: 600;
+  color: var(--muted); transition: border-color .18s, color .18s;
+  white-space: nowrap;
+}
+.req-cancel-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+/* ── TOAST ──────────────────────────────────── */
+.toast {
+  position: fixed; bottom: 26px; left: 50%; transform: translateX(-50%) translateY(8px);
+  background: #14082a; color: #fff;
+  padding: 11px 20px; border-radius: 12px; font-size: 13.5px; font-weight: 500;
+  box-shadow: 0 6px 24px rgba(0,0,0,.4);
+  opacity: 0; transition: opacity .2s, transform .2s;
+  pointer-events: none; z-index: 99999;
+  display: flex; align-items: center; gap: 8px;
+  border: 1px solid rgba(124,58,237,0.35);
+}
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+/* ── MODAL ──────────────────────────────────── */
+.modal-overlay {
+  position: fixed; inset: 0; z-index: 200;
+  background: rgba(10,5,20,0.7); backdrop-filter: blur(8px);
+  display: none; align-items: center; justify-content: center; padding: 20px;
+}
+.modal-overlay.open { display: flex; animation: mfade .18s ease; }
+@keyframes mfade { from{opacity:0} to{opacity:1} }
+
+.modal {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 20px; width: 100%; max-width: 480px;
+  padding: 32px; display: flex; flex-direction: column; gap: 20px;
+  box-shadow: 0 32px 80px rgba(0,0,0,0.4);
+  animation: mslide .22s cubic-bezier(.22,1,.36,1);
+}
+@keyframes mslide { from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:none} }
+
+.modal-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+.modal-title { font-size: 20px; font-weight: 700; line-height: 1.3; }
+.modal-close {
+  background: var(--surface2); border: 1px solid var(--border); border-radius: 8px;
+  width: 32px; height: 32px; cursor: pointer; color: var(--muted); font-size: 18px;
+  display: grid; place-items: center; flex-shrink: 0;
+  transition: border-color .18s, color .18s;
+}
+.modal-close:hover { border-color: var(--accent); color: var(--accent); }
+
+.modal-who {
+  font-size: 13px; font-weight: 600; color: var(--muted); margin-bottom: 4px; letter-spacing: .3px;
+}
+.modal-audience-btns { display: flex; flex-direction: column; gap: 10px; }
+.modal-audience-btns .btn-signup { width: 100%; font-size: 15px; padding: 13px 16px; border-radius: 12px; }
+
+.modal-note {
+  font-size: 13px; color: var(--muted); text-align: center;
+  padding-top: 6px; border-top: 1px solid var(--border); line-height: 1.6;
+}
+
+/* ── EMPTY STATE ─────────────────────────────── */
+.empty { grid-column: 1/-1; text-align: center; padding: 60px 20px; color: var(--muted); }
+.empty .ei { font-size: 38px; margin-bottom: 12px; }
+.empty h3 { font-size: 18px; color: var(--text); margin-bottom: 6px; }
+
+/* ── RESPONSIVE ─────────────────────────────── */
+@media(max-width:640px){
+  header,.hero,.controls,.grid { padding-left: 20px; padding-right: 20px; }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-left">
+    <div class="logo">
+      <img src="https://moodle.weston.ac.uk/learning_content/Digital Master classes/Directory/assets/Digital Education Logo V6.png" alt="Digital Learning Team" style="height:58px; width:auto; object-fit:contain;">
+    </div>
+  </div>
+  <div class="header-right">
+    <span class="college-badge">Weston College</span>
+    <div class="theme-switch" onclick="toggleTheme()" title="Toggle light / dark mode">
+      <span class="theme-switch-label">☀️</span>
+      <div class="switch-track"><div class="switch-knob"></div></div>
+      <span class="theme-switch-label">🌙</span>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eyebrow">Digital Master Classes</div>
+  <h1>Learn something <em>new this term</em></h1>
+  <p class="hero-sub">Bespoke, co-delivered projects run by the Digital Education Team. We work with you to fit the project around your curriculum and your learners.</p>
+</div>
+
+<!-- CONTROLS -->
+<div class="controls">
+  <div class="search-wrap">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+    <input class="search" type="text" placeholder="Search sessions…" oninput="filterSearch(this.value)"/>
+  </div>
+  <div class="count-badge">Showing <strong id="count">1</strong> session</div>
+</div>
+
+<!-- GRID -->
+<div class="grid" id="grid">
+
+
+  <!-- CARD: VR / ThingLink -->
+  <div class="card" data-accent="purple" id="card-vr">
+    <div class="card-thumb">
+      <div class="card-thumb-bg" style="background-image: url('https://moodle.weston.ac.uk/learning_content/Digital Master classes/Directory/assets/VR.jpg'); background-size: cover; background-position: center;"></div>
+      <div class="card-thumb-overlay"></div>
+      <span class="audience-badge both">👥 Staff &amp; Students</span>
+      <span class="duration-badge">⏱ Multi-session project</span>
+    </div>
+    <div class="card-divider"></div>
+    <div class="card-body">
+      <div class="card-title">Virtual Reality with ThingLink</div>
+      <p class="card-intro">A collaborative, co-delivered classroom project where your students become digital creators — building interactive, immersive VR environments rooted in your course curriculum. No prior VR or technical experience needed.</p>
+      <div class="detail-section">
+        <div class="collab-banner">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          You bring the subject knowledge — we bring the tech and the teaching support
+        </div>
+        <div>
+          <div class="detail-heading">Curriculum ideas</div>
+          <div class="curriculum-tags">
+            <span class="curr-tag">Construction</span>
+            <span class="curr-tag">Hair &amp; Beauty</span>
+            <span class="curr-tag">Health &amp; Social Care</span>
+            <span class="curr-tag">Public Services</span>
+            <span class="curr-tag">IT</span>
+            <span class="curr-tag">Catering</span>
+          </div>
+        </div>
+      </div>
+      <div class="meta-row">
+        <div class="meta-chip">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          Whole class groups
+        </div>
+        <div class="meta-chip">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          Up to <strong>5 sessions</strong>
+        </div>
+      </div>
+    </div>
+    <div class="card-footer">
+      <div class="signup-group">
+        <button class="btn-signup details-btn" onclick="openDetails('vr')">
+          More Details
+        </button>
+        <button class="btn-signup request-btn" onclick="requestMeeting('Virtual Reality with ThingLink')">
+          Request a Meeting
+        </button>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /grid -->
+
+<!-- REQUEST A MEETING MODAL -->
+<div id="requestOverlay" onclick="closeRequestOutside(event)" style="display:none; position:fixed; top:0; left:0; right:0; bottom:0; z-index:10000; background:rgba(10,5,20,0.85); backdrop-filter:blur(10px); overflow-y:auto;">
+  <div id="requestModal" style="width:580px; max-width:calc(100% - 48px); margin:60px auto 60px; background:var(--surface); border:1px solid var(--border); border-radius:24px; overflow:hidden; box-shadow:0 40px 100px rgba(0,0,0,0.5);">
+
+    <!-- Modal header -->
+    <div class="req-header">
+      <div class="req-header-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      </div>
+      <div>
+        <div class="req-header-title">Request a Meeting</div>
+        <div class="req-header-sub" id="reqSessionLabel">Digital Master Classes</div>
+      </div>
+      <button class="req-close" onclick="closeRequestModal()">✕</button>
+    </div>
+
+    <!-- Form body -->
+    <div class="req-body">
+
+      <div class="req-intro">
+        Tell us a bit about yourself and what you're hoping to explore. We'll get back to you to arrange a time that works.
+      </div>
+
+      <div class="req-fields">
+
+        <div class="req-row">
+          <div class="req-field">
+            <label class="req-label" for="req-name">Your Name <span class="req-required">*</span></label>
+            <input class="req-input" type="text" id="req-name" placeholder="e.g. Sarah Jones" autocomplete="name"/>
+          </div>
+          <div class="req-field">
+            <label class="req-label" for="req-role">Your Role <span class="req-required">*</span></label>
+            <input class="req-input" type="text" id="req-role" placeholder="e.g. Lecturer, Head of Area"/>
+          </div>
+        </div>
+
+        <div class="req-field">
+          <label class="req-label" for="req-email">Email Address <span class="req-required">*</span></label>
+          <input class="req-input" type="email" id="req-email" placeholder="your.name@weston.ac.uk" autocomplete="email"/>
+        </div>
+
+        <div class="req-field">
+          <label class="req-label" for="req-area">Curriculum Area / Department</label>
+          <input class="req-input" type="text" id="req-area" placeholder="e.g. Construction, Hair & Beauty, IT"/>
+        </div>
+
+        <div class="req-field">
+          <label class="req-label" for="req-message">Tell us about your group and what you'd like to achieve <span class="req-required">*</span></label>
+          <textarea class="req-textarea" id="req-message" rows="5" placeholder="e.g. I teach a Level 2 Hair & Beauty group of 18 students. I'm looking at embedding digital skills into their portfolio work and think a VR project could work well alongside their client assessment unit..."></textarea>
+        </div>
+
+        <div class="req-field">
+          <label class="req-label" for="req-timing">When are you hoping to run this?</label>
+          <input class="req-input" type="text" id="req-timing" placeholder="e.g. After half term, Spring term, Flexible"/>
+        </div>
+
+        <div id="req-error" class="req-error" style="display:none;">
+          Please fill in all required fields before sending.
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="req-footer">
+      <button class="req-cancel-btn" onclick="closeRequestModal()">Cancel</button>
+      <button class="btn-signup request-btn" style="flex:1; font-size:15px; padding:13px 18px;" onclick="submitRequest()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        Send Request
+      </button>
+    </div>
+
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<!-- DETAILS MODAL - direct body child, position fixed -->
+<div id="modalOverlay" onclick="closeModalOutside(event)" style="display:none; position:fixed; top:0; left:0; right:0; bottom:0; z-index:9999; background:rgba(10,5,20,0.8); backdrop-filter:blur(10px); overflow-y:auto;">
+  <div id="modalInner" style="width:1100px; max-width:calc(100% - 48px); margin:40px auto 60px; background:var(--surface); border:1px solid var(--border); border-radius:24px; overflow:hidden; box-shadow:0 40px 100px rgba(0,0,0,0.5);">
+    <div class="modal-hero">
+      <div class="modal-hero-bg" id="modalHeroBg"></div>
+      <div class="modal-hero-overlay"></div>
+      <div class="modal-hero-title" id="modalHeroTitle"></div>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+    <div class="modal-footer" id="modalFooter"></div>
+  </div>
+</div>
+
+<script>
+// ── Session detail data ──────────────────────────
+const sessionDetails = {
+  vr: {
+    title: 'Virtual Reality with ThingLink',
+    image: "https://moodle.weston.ac.uk/learning_content/Digital Master classes/Directory/assets/VR.jpg",
+    intro: `This is a collaborative, co-delivered classroom project designed for your students with no prior VR or technical experience needed. Your students will become digital creators — building interactive, immersive environments based entirely on your course curriculum, embedding their subject knowledge by "teaching" it inside a virtual world. By the end of the project they will have built and published their own interactive environments: portfolio pieces, revision tools, or workplace simulations viewable in a VR headset.`,
+    collab: `The Digital Education Team will co-deliver this project with you. You bring the subject knowledge — we bring the tech and the teaching support, joining you in the classroom to help facilitate the project over as many sessions as needed.`,
+    steps: [
+      { label: 'Session 1: Tech Intro (Led by DET)', detail: 'Learners try the VR headsets, explore existing environments, and learn the basic ThingLink software.' },
+      { label: 'Session 2: Research & Storyboarding (Co-led)', detail: 'Learners work in groups to map out their 360° environment, write their text tags, and plan their media based on your assignment brief.' },
+      { label: 'Sessions 3 & 4: Build & Publish (Co-led)', detail: 'Learners film, photograph and upload their content, drop in interactive hotspots, and link scenes together.' },
+      { label: 'Session 5: The VR Showcase (Co-led)', detail: 'Learners load their finished projects onto the VR headsets and share each other\'s work.' },
+    ],
+    requirements: [
+      'A computer room — one device per participant',
+      'ThingLink accounts (supplied by DET)',
+      'VR headsets (provided by DET)',
+      'A 360° image or video (provided, or created in session)',
+    ],
+    objectives: [
+      'Explore and analyse immersive media — understand how 360° environments differ from standard 2D content',
+      'Critique UX and design by navigating existing environments from the inside',
+      'Idea generation and project planning — develop concepts for an interactive resource',
+      'Content creation — capture or create a 360° scene as the foundation of an environment',
+      'Embed interactive hotspots — text, images, links and media within the 3D space',
+      'Build navigation between multiple scenes to create a multi-location environment',
+      'Publish and present — share finished environments using a VR headset',
+    ],
+    curriculum: [
+      { area: 'Construction', examples: 'Interactive blueprints, tool safety, site safety' },
+      { area: 'Hair & Beauty', examples: 'Virtual salon, step-by-step how-to guides' },
+      { area: 'Health & Social Care', examples: 'Virtual home assessments' },
+      { area: 'Public Services', examples: 'Interactive crime scene' },
+      { area: 'IT', examples: 'Server room walk-through' },
+      { area: 'Catering', examples: '360° kitchen inspection, interactive how-to resources' },
+    ],
+    ctaNote: 'During our initial chat, we will look at your units throughout the year and map out how this project can fit into your teaching — supporting key future skills such as digital literacy, project management and presentation.',
+  }
+};
+
+function toggleAccordion(id) {
+  const trigger = document.getElementById('trigger-' + id);
+  const body = document.getElementById('body-' + id);
+  trigger.classList.toggle('open');
+  body.classList.toggle('open');
+}
+
+function accordionSection(id, iconPath, title, subtitle, contentHtml) {
+  return `
+    <div class="modal-accordion">
+      <button class="accordion-trigger" id="trigger-${id}" onclick="toggleAccordion('${id}')">
+        <div class="accordion-label">
+          <div class="accordion-label-icon">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">${iconPath}</svg>
+          </div>
+          <div class="accordion-label-text">
+            <strong>${title}</strong>
+            <small>${subtitle}</small>
+          </div>
+        </div>
+        <div class="accordion-chevron">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+      </button>
+      <div class="accordion-body" id="body-${id}">${contentHtml}</div>
+    </div>`;
+}
+
+function openDetails(id) {
+  const d = sessionDetails[id];
+  if (!d) return;
+
+  document.getElementById('modalHeroBg').style.backgroundImage = `url('${d.image}')`;
+  document.getElementById('modalHeroTitle').textContent = d.title;
+
+  const stepsHtml = `<div class="session-steps">${d.steps.map((s, i) => `
+    <div class="session-step">
+      <div class="step-num">${i + 1}</div>
+      <div class="step-content"><strong>${s.label}</strong><span>${s.detail}</span></div>
+    </div>`).join('')}</div>`;
+
+  const reqsHtml = `<ul class="modal-list">${d.requirements.map(r => `<li>${r}</li>`).join('')}</ul>`;
+
+  const objsHtml = `<ul class="modal-list">${d.objectives.map(o => `<li>${o}</li>`).join('')}</ul>`;
+
+  const currHtml = `<div class="modal-curr-tags">${d.curriculum.map(c =>
+    `<div class="modal-curr-tag"><span>${c.area}</span> — ${c.examples}</div>`).join('')}</div>`;
+
+  document.getElementById('modalBody').innerHTML = `
+    <p class="modal-intro">${d.intro}</p>
+    <div class="modal-collab">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      ${d.collab}
+    </div>
+    <div class="accordions-wrap">
+      ${accordionSection('steps', '<rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>', 'Example Session Structure', 'How the project typically unfolds across sessions', stepsHtml)}
+      ${accordionSection('reqs', '<path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>', 'What You\'ll Need', 'Equipment and resources required', reqsHtml)}
+      ${accordionSection('objs', '<circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>', 'Session Objectives', 'What learners will be able to do by the end', objsHtml)}
+      ${accordionSection('curr', '<path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>', 'Curriculum Ideas', 'Examples of how this fits different subject areas', currHtml)}
+    </div>
+  `;
+
+  document.getElementById('modalFooter').innerHTML = `
+    <button class="btn-signup request-btn" style="flex:1; font-size:15px; padding:13px 18px;" onclick="closeModal(); requestMeeting('${d.title}')">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      Request a Meeting
+    </button>
+  `;
+
+  document.getElementById('modalOverlay').style.display = 'block';
+}
+
+function closeModal() {
+  document.getElementById('modalOverlay').style.display = 'none';
+}
+function closeModalOutside(e) {
+  if (e.target === document.getElementById('modalOverlay')) closeModal();
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+// ── Search ───────────────────────────────────────
+function filterSearch(v) {
+  const q = v.toLowerCase();
+  const cards = document.querySelectorAll('.card');
+  let visible = 0;
+  cards.forEach(card => {
+    const title = card.querySelector('.card-title').textContent.toLowerCase();
+    const intro = card.querySelector('.card-intro')?.textContent.toLowerCase() || '';
+    const match = !q || title.includes(q) || intro.includes(q);
+    card.style.display = match ? '' : 'none';
+    if (match) visible++;
+  });
+  document.getElementById('count').textContent = visible;
+}
+
+// ── Request a Meeting modal ──────────────────────
+function requestMeeting(sessionTitle) {
+  document.getElementById('reqSessionLabel').textContent = sessionTitle || 'Digital Master Classes';
+  // Clear previous values
+  ['req-name','req-role','req-email','req-area','req-message','req-timing'].forEach(id => {
+    document.getElementById(id).value = '';
+  });
+  document.getElementById('req-error').style.display = 'none';
+  document.getElementById('requestOverlay').style.display = 'block';
+}
+
+function closeRequestModal() {
+  document.getElementById('requestOverlay').style.display = 'none';
+}
+function closeRequestOutside(e) {
+  if (e.target === document.getElementById('requestOverlay')) closeRequestModal();
+}
+
+function submitRequest() {
+  const name    = document.getElementById('req-name').value.trim();
+  const role    = document.getElementById('req-role').value.trim();
+  const email   = document.getElementById('req-email').value.trim();
+  const area    = document.getElementById('req-area').value.trim();
+  const message = document.getElementById('req-message').value.trim();
+  const timing  = document.getElementById('req-timing').value.trim();
+  const session = document.getElementById('reqSessionLabel').textContent;
+
+  // Basic validation
+  if (!name || !role || !email || !message) {
+    document.getElementById('req-error').style.display = 'block';
+    return;
+  }
+  document.getElementById('req-error').style.display = 'none';
+
+  // ── PHP ENDPOINT — wire up when server is ready ──────────────────────────
+  // Replace the simulated section below with:
+  //
+  // fetch('https://moodle.weston.ac.uk/path/to/handler.php', {
+  //   method: 'POST',
+  //   headers: { 'Content-Type': 'application/json' },
+  //   body: JSON.stringify({ session, name, role, email, area, message, timing })
+  // })
+  // .then(res => res.json())
+  // .then(data => {
+  //   if (data.success) { showToast('✅ Request sent! We\'ll be in touch shortly.'); closeRequestModal(); }
+  //   else              { document.getElementById('req-error').textContent = data.error || 'Something went wrong.'; document.getElementById('req-error').style.display = 'block'; }
+  // })
+  // .catch(() => { document.getElementById('req-error').textContent = 'Could not connect. Please try again.'; document.getElementById('req-error').style.display = 'block'; });
+  //
+  // ────────────────────────────────────────────────────────────────────────
+
+  // Simulated success (remove when PHP endpoint is live)
+  closeRequestModal();
+  showToast('✅ Request sent! We\'ll be in touch shortly.');
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(window._toastT);
+  window._toastT = setTimeout(() => t.classList.remove('show'), 4000);
+}
+
+// ── Theme toggle ────────────────────────────────
+function toggleTheme() {
+  const html = document.documentElement;
+  html.setAttribute('data-theme', html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+}
+
+// Init
+</script>
+</body>
+</html>
