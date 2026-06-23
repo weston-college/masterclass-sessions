@@ -146,25 +146,29 @@ header {
 /* ── HERO ───────────────────────────────────── */
 .hero {
   position: relative; z-index: 1;
-  padding: 40px 48px 28px;
+  padding: 28px 48px 20px;
 }
-.hero-eyebrow {
-  display: inline-flex; align-items: center; gap: 8px;
-  font-size: 13px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase;
-  color: var(--accent-warm); margin-bottom: 14px;
-}
-.hero-eyebrow::before { content:''; width: 20px; height: 2px; background: var(--accent-warm); border-radius: 2px; }
 
 h1 {
   font-size: clamp(28px, 4vw, 46px); font-weight: 800; line-height: 1.1;
-  letter-spacing: -.7px; margin-bottom: 12px;
+  letter-spacing: -.7px; margin-bottom: 10px;
 }
 h1 em {
   font-style: normal;
   background: linear-gradient(90deg, #7c3aed, #ea7c2e);
   -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
 }
-.hero-sub { color: var(--muted); font-size: 16.5px; max-width: 580px; line-height: 1.65; }
+.hero-sub { color: var(--muted); font-size: 15.5px; max-width: 560px; line-height: 1.6; }
+
+/* ── SECTION CONTROLS ────────────────────────── */
+.section-controls {
+  position: relative; z-index: 1;
+  padding: 20px 48px 12px;
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  flex-wrap: wrap; border-top: 1px solid var(--border);
+}
+.section-controls .section-title { margin: 0; font-size: clamp(18px, 2.2vw, 24px); }
+.section-controls .controls { padding: 0; margin: 0; }
 
 /* ── FILTERS ─────────────────────────────────── */
 .controls {
@@ -709,14 +713,14 @@ h1 em {
 /* ── CUSTOM RESOURCE BANNER ──────────────────── */
 .custom-resource-banner {
   position: relative; z-index: 1;
-  padding: 40px 48px 0;
+  padding: 4px 48px 0;
 }
 .custom-resource-banner-inner {
   display: flex; align-items: center; gap: 16px;
   background: linear-gradient(135deg, rgba(124,58,237,0.1) 0%, rgba(91,33,182,0.06) 100%);
   border: 1px solid rgba(124,58,237,0.25);
   border-left: 4px solid var(--accent);
-  border-radius: 16px; padding: 18px 22px;
+  border-radius: 16px; padding: 12px 18px;
   flex-wrap: wrap;
   max-width: 700px;
 }
@@ -767,6 +771,17 @@ h1 em {
   margin: 16px 48px 0;
   height: 1px; background: var(--border);
 }
+
+/* ── SECTION CONTROLS ────────────────────────── */
+.section-controls {
+  position: relative; z-index: 1;
+  padding: 20px 48px 12px;
+  margin-top: 24px;
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  flex-wrap: wrap; border-top: 1px solid var(--border);
+}
+.section-controls .section-title { margin: 0; font-size: clamp(18px, 2.2vw, 24px); }
+.section-controls .controls { padding: 0; margin: 0; }
 
 /* Work with us - full width card */
 .work-with-us-grid {
@@ -891,7 +906,6 @@ h1 em {
 
 <!-- HERO -->
 <div class="hero">
-  <div class="hero-eyebrow">Digital Master Classes</div>
   <h1>Learn something <em>new this term</em></h1>
   <p class="hero-sub">Bespoke, co-delivered projects and digital learning resources from the Digital Education Team - built around your curriculum, your learners, and your goals.</p>
 </div>
@@ -913,19 +927,16 @@ h1 em {
   </div>
 </div>
 
-<!-- SECTION: Master class taught sessions -->
-<div class="section-header">
+<!-- SECTION HEADER + CONTROLS -->
+<div class="section-controls">
   <div class="section-title">Master class taught sessions</div>
-  <p class="section-sub">Co-delivered projects run in your classroom. We work with you to fit the project around your curriculum and your learners.</p>
-</div>
-
-<!-- CONTROLS -->
-<div class="controls">
-  <div class="search-wrap">
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-    <input class="search" type="text" placeholder="Search sessions…" oninput="filterSearch(this.value)"/>
+  <div class="controls">
+    <div class="search-wrap">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input class="search" type="text" placeholder="Search sessions…" oninput="filterSearch(this.value)"/>
+    </div>
+    <div class="count-badge">Showing <strong id="count">4</strong> sessions</div>
   </div>
-  <div class="count-badge">Showing <strong id="count">4</strong> sessions</div>
 </div>
 
 <!-- GRID -->
