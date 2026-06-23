@@ -732,12 +732,61 @@ h1 em {
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
     <input class="search" type="text" placeholder="Search sessions…" oninput="filterSearch(this.value)"/>
   </div>
-  <div class="count-badge">Showing <strong id="count">2</strong> sessions</div>
+  <div class="count-badge">Showing <strong id="count">4</strong> sessions</div>
 </div>
 
 <!-- GRID -->
 <div class="grid" id="grid">
 
+
+  <!-- CARD: Data Management / Excel -->
+  <div class="card" data-accent="teal" id="card-excel">
+    <div class="card-thumb">
+      <div class="card-thumb-bg" style="background-image: url('https://moodle.weston.ac.uk/learning_content/Digital Master classes/Directory/assets/data management.jpg'); background-size: cover; background-position: center;"></div>
+      <div class="card-thumb-overlay"></div>
+      <span class="duration-badge">⏱ 1 – 2 sessions</span>
+    </div>
+    <div class="card-divider"></div>
+    <div class="card-body">
+      <div class="card-title">Data Management, Manipulation &amp; Presentation</div>
+      <p class="card-intro">A hands-on Excel session for anyone who works with data — moving from the basics of navigation and formatting through to building a live dashboard. Practical, jargon-free, and immediately useful in day-to-day work.</p>
+      <div class="detail-section">
+        <div class="collab-banner">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          We lead the session — your tutor or line manager is welcome to join and support
+        </div>
+        <div>
+          <div class="detail-heading">Who is this for?</div>
+          <div class="curriculum-tags">
+            <span class="curr-tag">Teaching Staff</span>
+            <span class="curr-tag">Support Staff</span>
+            <span class="curr-tag">Students</span>
+            <span class="curr-tag">Any curriculum area</span>
+          </div>
+        </div>
+      </div>
+      <div class="meta-row">
+        <div class="meta-chip">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          Whole class or team groups
+        </div>
+        <div class="meta-chip">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          <strong>1 – 2 sessions</strong>
+        </div>
+      </div>
+    </div>
+    <div class="card-footer">
+      <div class="signup-group">
+        <button class="btn-signup details-btn" onclick="openDetails('excel')">
+          More Details
+        </button>
+        <button class="btn-signup request-btn" onclick="requestMeeting('Data Management, Manipulation & Presentation')">
+          Request a Meeting
+        </button>
+      </div>
+    </div>
+  </div>
 
   <!-- CARD: VR / ThingLink -->
   <div class="card" data-accent="purple" id="card-vr">
@@ -750,7 +799,7 @@ h1 em {
     <div class="card-divider"></div>
     <div class="card-body">
       <div class="card-title">Virtual Reality with ThingLink</div>
-      <p class="card-intro">A collaborative, co-delivered classroom project where your students become digital creators — building interactive, immersive VR environments rooted in your course curriculum. No prior VR or technical experience needed.</p>
+      <p class="card-intro">A collaborative, co-delivered project where your group become digital creators — building interactive, immersive VR environments rooted in your curriculum area. No prior VR or technical experience needed.</p>
       <div class="detail-section">
         <div class="collab-banner">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
@@ -801,7 +850,7 @@ h1 em {
     <div class="card-divider"></div>
     <div class="card-body">
       <div class="card-title">Digital Content Creation with Adobe Express</div>
-      <p class="card-intro">A collaborative, co-delivered project giving vocational and trade learners a real career advantage — designing professional marketing materials using photos and videos of their own college work. From logos to animated TikTok adverts, every learner leaves with assets they can use.</p>
+      <p class="card-intro">A collaborative, co-delivered project giving vocational and trade learners a real career advantage — designing professional marketing materials using photos and videos of their own work. From logos to animated TikTok adverts, everyone leaves with assets they can use.</p>
       <div class="detail-section">
         <div class="collab-banner">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
@@ -836,6 +885,56 @@ h1 em {
           More Details
         </button>
         <button class="btn-signup request-btn" onclick="requestMeeting('Digital Content Creation with Adobe Express')">
+          Request a Meeting
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD: Drone Flying -->
+  <div class="card" data-accent="teal" id="card-drone">
+    <div class="card-thumb">
+      <div class="card-thumb-bg" style="background: linear-gradient(135deg, #0e7490 0%, #164e63 100%);"></div>
+      <div class="card-thumb-overlay"></div>
+      <span class="duration-badge">⏱ Multi-session project</span>
+    </div>
+    <div class="card-divider"></div>
+    <div class="card-body">
+      <div class="card-title">Drone Flying & Geospatial Data</div>
+      <p class="card-intro">A multi-stage project giving learners industry skills in automated aviation, tactical piloting, and geospatial data analysis. From drone law and indoor flight to outdoor missions and 3D mapping — no prior experience needed.</p>
+      <div class="detail-section">
+        <div class="collab-banner">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          You bring the subject knowledge — we bring the tech and the teaching support
+        </div>
+        <div>
+          <div class="detail-heading">Curriculum ideas</div>
+          <div class="curriculum-tags">
+            <span class="curr-tag">Public Services</span>
+            <span class="curr-tag">Construction</span>
+            <span class="curr-tag">Surveying</span>
+            <span class="curr-tag">Engineering</span>
+            <span class="curr-tag">Sports</span>
+          </div>
+        </div>
+      </div>
+      <div class="meta-row">
+        <div class="meta-chip">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          Small groups
+        </div>
+        <div class="meta-chip">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          Up to <strong>5 sessions</strong>
+        </div>
+      </div>
+    </div>
+    <div class="card-footer">
+      <div class="signup-group">
+        <button class="btn-signup details-btn" onclick="openDetails('drone')">
+          More Details
+        </button>
+        <button class="btn-signup request-btn" onclick="requestMeeting('Drone Flying & Geospatial Data')">
           Request a Meeting
         </button>
       </div>
@@ -939,11 +1038,43 @@ h1 em {
 <script>
 // ── Session detail data ──────────────────────────
 const sessionDetails = {
+  excel: {
+    title: 'Data Management, Manipulation & Presentation',
+    image: "https://moodle.weston.ac.uk/learning_content/Digital Master classes/Directory/assets/data management.jpg",
+    intro: `A practical, hands-on session for anyone who works with data — whether you're a tutor tracking outcomes, a support staff member managing registers, or a learner using spreadsheets as part of your course. We lead the session, and your tutor or line manager is welcome to join and support throughout. Starting from the basics of Excel navigation and formatting, participants build up to cell referencing, formula writing, and data visualisation — leaving with a working dashboard they built themselves that they can take away and use immediately.`,
+    collab: `We lead this session from start to finish — but having your tutor or manager in the room makes a real difference. They can help contextualise the learning, answer subject-specific questions, and support anyone who needs extra time. No prior Excel knowledge is needed from anyone in the room.`,
+    steps: [
+      { label: 'Part 1: Excel Foundations', detail: 'Participants get comfortable with cells, shading, sheet navigation, renaming tabs, and colour coding — the building blocks that everything else depends on.' },
+      { label: 'Part 2: Cell Referencing & Formulas', detail: 'Participants learn how to reference cells within formulas, link data across sheets, and start using logic-based formulas including IF statements.' },
+      { label: 'Part 3: Dashboard Build', detail: 'Using everything covered so far, participants build a dashboard-style overview sheet that pulls data from across the workbook and presents it clearly at a glance.' },
+      { label: 'Part 4: Charts, Pivot Tables & Advanced Formulas', detail: 'Participants create and edit charts to visualise trends, build pivot tables for deeper data breakdowns, and apply COUNTIF and VLOOKUP to surface meaningful information from raw data.' },
+    ],
+    requirements: [
+      'A computer room — one device per participant',
+      'Microsoft Excel or Microsoft 365 access',
+      'A sample dataset (provided by DET, or we can work with your own data)',
+    ],
+    objectives: [
+      'Navigate Excel confidently — moving between sheets, renaming them, and applying colour coding to organise workbooks',
+      'Reference cells accurately within formulas, both on the same sheet and across multiple sheets',
+      'Build a dashboard-style overview sheet that draws data from elsewhere in the workbook',
+      'Create and edit a basic chart to visualise trends within a dataset',
+      'Build and modify a pivot chart to interrogate and display more complex data breakdowns',
+      'Apply advanced formulas including COUNTIF, VLOOKUP, and IF statements to filter and surface meaningful information',
+    ],
+    curriculum: [
+      { area: 'Teaching Staff', examples: 'Track student attendance, progress data, or intervention outcomes across a class or cohort' },
+      { area: 'Support & Admin Staff', examples: 'Manage registers, budgets, or reporting spreadsheets more efficiently' },
+      { area: 'Business & IT Students', examples: 'Build data skills directly applicable to employment and further study' },
+      { area: 'Any subject area', examples: 'We can tailor the sample dataset to reflect data your group already works with' },
+    ],
+    ctaNote: 'During our initial chat we will look at what data your group currently works with and tailor the session around it — so participants leave with something immediately relevant to their role or course.',
+  },
   vr: {
     title: 'Virtual Reality with ThingLink',
     image: "https://moodle.weston.ac.uk/learning_content/Digital Master classes/Directory/assets/VR.jpg",
-    intro: `This is a collaborative, co-delivered classroom project designed for your students with no prior VR or technical experience needed. Your students will become digital creators — building interactive, immersive environments based entirely on your course curriculum, embedding their subject knowledge by "teaching" it inside a virtual world. By the end of the project they will have built and published their own interactive environments: portfolio pieces, revision tools, or workplace simulations viewable in a VR headset.`,
-    collab: `The Digital Education Team will co-deliver this project with you. You bring the subject knowledge — we bring the tech and the teaching support, joining you in the classroom to help facilitate the project over as many sessions as needed.`,
+    intro: `This is a collaborative, co-delivered project designed for your group with no prior VR or technical experience needed. Participants become digital creators — building interactive, immersive environments based entirely on your curriculum area, embedding subject knowledge by "teaching" it inside a virtual world. By the end of the project they will have built and published their own interactive environments: portfolio pieces, revision tools, or workplace simulations viewable in a VR headset.`,
+    collab: `The Digital Education Team will co-deliver this project with you. You bring the subject knowledge — we bring the tech and the teaching support, joining you to help facilitate the project over as many sessions as needed.`,
     steps: [
       { label: 'Session 1: Tech Intro (Led by DET)', detail: 'Learners try the VR headsets, explore existing environments, and learn the basic ThingLink software.' },
       { label: 'Session 2: Research & Storyboarding (Co-led)', detail: 'Learners work in groups to map out their 360° environment, write their text tags, and plan their media based on your assignment brief.' },
@@ -978,8 +1109,8 @@ const sessionDetails = {
   adobe: {
     title: 'Digital Content Creation with Adobe Express',
     image: "https://moodle.weston.ac.uk/learning_content/Digital Master classes/Directory/assets/adobe express.jpg",
-    intro: `This is a collaborative, co-delivered classroom project designed to give your vocational and trade learners a genuine career advantage. Students will learn the business and marketing skills required to operate as a successful sole trader or start-up — moving from initial concept to finished digital creation. Using photos and videos of real work they have done in college, learners will design logos, social media adverts, and animated video content for TikTok or Reels. Every learner walks away with assets they can use to boost their CV, secure apprenticeships, or launch their own business.`,
-    collab: `The Digital Education Team will co-deliver this project with you. You bring the subject knowledge — we bring the tech and the teaching support, joining you in the classroom to help facilitate the project over as many sessions as needed.`,
+    intro: `This is a collaborative, co-delivered project designed to give vocational and trade learners a genuine career advantage. Participants will learn the business and marketing skills required to operate as a successful sole trader or start-up — moving from initial concept to finished digital creation. Using photos and videos of real work, they will design logos, social media adverts, and animated video content for TikTok or Reels. Everyone walks away with assets they can use to boost their CV, secure apprenticeships, or launch their own business.`,
+    collab: `The Digital Education Team will co-deliver this project with you. You bring the subject knowledge — we bring the tech and the teaching support, joining you to help facilitate the project over as many sessions as needed.`,
     steps: [
       { label: 'Session 1: Branding & Logo Design (Led by DET)', detail: 'Learners look at real-world trade branding, learn about colour psychology, and design a clean, professional company logo in Adobe Express.' },
       { label: 'Session 2: The Social Media Launch (Co-led)', detail: 'Learners photograph their practical college work and turn it into a crisp, professional Facebook or Instagram advert.' },
@@ -1002,6 +1133,35 @@ const sessionDetails = {
       { area: 'Construction & Trades', examples: 'Brand a local trade business, ad highlighting work or DIY/safety tips' },
       { area: 'Health, Social Care & Early Years', examples: 'Brand a childminding business or create a community health campaign' },
       { area: 'Business, Travel & Tourism', examples: 'Marketing campaign for a travel niche using promotional brochures and TikTok videos' },
+    ],
+    ctaNote: 'During our initial chat, we will look at your units throughout the year and map out how this project can fit into your teaching — supporting key future skills such as digital literacy, project management and presentation.',
+  },
+  drone: {
+    title: 'Drone Flying & Geospatial Data',
+    image: '',
+    intro: `This is a multi-stage project designed to give learners industry skills in automated aviation, tactical piloting, and geospatial data analysis — no prior drone experience required. Learners start with drone safety legislation, move to precision control in an indoor space, then progress to a larger outdoor environment where they carry out procedures related to their curriculum area. The project finishes with analysis of gathered aerial imagery and flight data. By the end, learners will understand how drones are transforming industries like construction, public services, engineering, and agriculture — and how to turn raw aerial images into 3D models or investigative reports.`,
+    collab: `The Digital Education Team will co-deliver this project with you. You bring the subject knowledge — we bring the tech and the teaching support, joining you to help facilitate the project over as many sessions as needed.`,
+    steps: [
+      { label: 'Sessions 1 & 2: Flight Theory & Legals', detail: 'Learners complete UK drone safety training and a mock flight test — covering airspace safety, pre-flight checklists, and the responsibilities of a commercial operator. Learners earn a Flyers ID.' },
+      { label: 'Session 3: Indoor Flight Skills (Sports Hall)', detail: 'Learners develop manual stick control, obstacle avoidance, and precision hover techniques using lightweight, safe indoor drones.' },
+      { label: 'Session 4: Outdoor Mission (Playing Field)', detail: 'Learners execute a mission scenario — either an automated grid-flight to map the field, or a simulated tactical Search & Rescue mission to locate targets.' },
+      { label: 'Session 5: Data Processing', detail: 'Learners upload aerial imagery or video footage and use open-source mapping software to stitch photos into an interactive 3D site map or calculate terrain data.' },
+    ],
+    requirements: [
+      'Computer room',
+      'Transport to Loxton',
+      'Small groups',
+    ],
+    objectives: [
+      'Drone Law — apply airspace safety guidelines, weather tracking metrics, and pre-flight compliance checks, and earn a Flyers ID',
+      'Precision Flight — demonstrate manual aircraft stability, altitude control, and emergency landing manoeuvres in a controlled indoor space',
+      'Outdoor Flight Skills — fly safely outdoors using waypoint navigation, camera angle calibration, and targeted search',
+      'Analyse Data — process raw aerial imagery into 3D models, calculate terrain boundaries, or identify target objects within the dataset',
+    ],
+    curriculum: [
+      { area: 'Public Services', examples: 'Learners act as an emergency response unit, mapping the playing field to find hidden targets' },
+      { area: 'Construction, Surveying & Engineering', examples: 'Learners fly a grid pattern and feed photos into mapping software to generate a 3D topographic model' },
+      { area: 'Sports', examples: 'Learners film a live match or training session from above, then analyse player movement to suggest performance improvements' },
     ],
     ctaNote: 'During our initial chat, we will look at your units throughout the year and map out how this project can fit into your teaching — supporting key future skills such as digital literacy, project management and presentation.',
   }
