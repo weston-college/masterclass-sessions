@@ -79,6 +79,7 @@ body {
   color: var(--text);
   font-size: 17px;
   min-height: 100vh;
+  padding-top: 42px;
   transition: background .3s, color .3s;
 }
 
@@ -92,7 +93,7 @@ body::before {
 
 /* ── HEADER ─────────────────────────────────── */
 header {
-  position: sticky; top: 0; z-index: 100;
+  position: relative; top: 0; z-index: 100;
   display: flex; align-items: center; justify-content: space-between;
   padding: 0 48px; height: 68px;
   background: var(--header-bg);
@@ -637,6 +638,17 @@ h1 em {
 }
 .req-cancel-btn:hover { border-color: var(--accent); color: var(--accent); }
 
+.resource-timeline-notice {
+  display: flex; gap: 12px; align-items: flex-start;
+  background: rgba(234,124,46,0.08);
+  border: 1px solid rgba(234,124,46,0.25);
+  border-left: 4px solid var(--accent-warm);
+  border-radius: 10px; padding: 13px 15px;
+  font-size: 13.5px; color: var(--text); line-height: 1.6;
+}
+.resource-timeline-notice svg { color: var(--accent-warm); }
+.resource-timeline-notice strong { display: block; font-weight: 700; margin-bottom: 3px; color: var(--accent-warm); }
+
 /* ── TOAST ──────────────────────────────────── */
 .toast {
   position: fixed; bottom: 26px; left: 50%; transform: translateX(-50%) translateY(8px);
@@ -694,6 +706,158 @@ h1 em {
 .empty .ei { font-size: 38px; margin-bottom: 12px; }
 .empty h3 { font-size: 18px; color: var(--text); margin-bottom: 6px; }
 
+/* ── CUSTOM RESOURCE BANNER ──────────────────── */
+.custom-resource-banner {
+  position: relative; z-index: 1;
+  padding: 40px 48px 0;
+}
+.custom-resource-banner-inner {
+  display: flex; align-items: center; gap: 16px;
+  background: linear-gradient(135deg, rgba(124,58,237,0.1) 0%, rgba(91,33,182,0.06) 100%);
+  border: 1px solid rgba(124,58,237,0.25);
+  border-left: 4px solid var(--accent);
+  border-radius: 16px; padding: 18px 22px;
+  flex-wrap: wrap;
+  max-width: 700px;
+}
+.custom-resource-banner-icon {
+  width: 44px; height: 44px; border-radius: 12px; flex-shrink: 0;
+  background: linear-gradient(135deg, #7c3aed, #5b21b6);
+  display: grid; place-items: center; color: #fff;
+  box-shadow: 0 4px 12px rgba(124,58,237,0.3);
+}
+.custom-resource-banner-text {
+  flex: 1; min-width: 200px; display: flex; flex-direction: column; gap: 3px;
+}
+.custom-resource-banner-text strong {
+  font-size: 15px; font-weight: 700; color: var(--text);
+}
+.custom-resource-banner-text span {
+  font-size: 13.5px; color: var(--muted); line-height: 1.5;
+}
+.custom-resource-banner-btn {
+  display: flex; align-items: center; gap: 6px; flex-shrink: 0;
+  padding: 10px 18px; border-radius: 10px;
+  background: var(--accent); color: #fff;
+  border: none; font-family: 'Outfit', sans-serif;
+  font-size: 14px; font-weight: 600; cursor: pointer;
+  transition: opacity .18s, transform .1s;
+  white-space: nowrap;
+}
+.custom-resource-banner-btn:hover { opacity: .88; }
+.custom-resource-banner-btn:active { transform: scale(.98); }
+
+/* ── SECTION HEADERS ─────────────────────────── */
+.section-header {
+  position: relative; z-index: 1;
+  padding: 48px 48px 8px;
+}
+.section-header + .grid { padding-top: 0; }
+.section-label {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 13px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--accent-warm); margin-bottom: 10px;
+}
+.section-label::before { content:''; width: 20px; height: 2px; background: var(--accent-warm); border-radius: 2px; }
+.section-title { font-size: clamp(20px, 2.5vw, 28px); font-weight: 800; color: var(--text); margin-bottom: 6px; letter-spacing: -.3px; }
+.section-sub { font-size: 15px; color: var(--muted); max-width: 560px; line-height: 1.6; }
+
+.section-divider {
+  position: relative; z-index: 1;
+  margin: 16px 48px 0;
+  height: 1px; background: var(--border);
+}
+
+/* Work with us - full width card */
+.work-with-us-grid {
+  position: relative; z-index: 1;
+  padding: 0 48px 80px;
+}
+.card-wide {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  display: grid; grid-template-columns: 340px 1fr;
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+  overflow: hidden;
+  animation: fadeUp .4s both;
+}
+.card-wide:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 48px rgba(0,0,0,0.18), 0 0 0 1px var(--accent2);
+  border-color: var(--accent2);
+}
+.card-wide::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, #7c3aed, #a78bfa);
+  opacity: 0; transition: opacity .3s;
+}
+.card-wide:hover::before { opacity: 1; }
+.card-wide-thumb {
+  position: relative; overflow: hidden; min-height: 280px;
+}
+.card-wide-thumb-bg {
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, #4c1d95 0%, #7c3aed 100%);
+  background-size: cover; background-position: center;
+  transition: transform .4s ease;
+}
+.card-wide:hover .card-wide-thumb-bg { transform: scale(1.04); }
+.card-wide-thumb-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to right, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0) 70%);
+}
+.card-wide-content {
+  padding: 32px; display: flex; flex-direction: column; gap: 16px;
+}
+.card-wide-tag {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
+  color: var(--accent); background: var(--accent-glow);
+  border: 1px solid rgba(124,58,237,0.2); border-radius: 20px; padding: 4px 12px;
+  width: fit-content;
+}
+.card-wide-title { font-size: 22px; font-weight: 800; color: var(--text); line-height: 1.25; }
+.card-wide-intro { font-size: 14.5px; color: var(--muted); line-height: 1.7; }
+.card-wide-footer {
+  margin-top: auto; padding-top: 16px;
+  border-top: 1px solid var(--border);
+  display: flex; gap: 10px; align-items: center;
+}
+.card-wide-meta { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 4px; }
+
+@media(max-width:768px){
+  .card-wide { grid-template-columns: 1fr; }
+  .card-wide-thumb { min-height: 180px; }
+}
+
+/* ── PREVIEW NOTICE ──────────────────────────── */
+.preview-notice {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  background: #dc2626; color: #fff;
+  padding: 10px 24px; font-size: 13.5px; line-height: 1.5; text-align: center;
+  flex-wrap: wrap;
+}
+.preview-notice svg { color: #fca5a5; flex-shrink: 0; }
+.preview-notice strong { color: #fef2f2; margin-right: 2px; }
+
+/* ── COMING SOON ─────────────────────────────── */
+.coming-soon-badge {
+  position: absolute; top: 12px; left: 12px;
+  background: rgba(234,124,46,0.9); color: #fff;
+  font-size: 11px; font-weight: 700; letter-spacing: .8px; text-transform: uppercase;
+  padding: 4px 10px; border-radius: 20px;
+  backdrop-filter: blur(6px);
+}
+.coming-soon-footer {
+  display: flex; align-items: flex-start; gap: 8px;
+  font-size: 13px; color: var(--muted); line-height: 1.55;
+  padding: 4px 0;
+}
+.coming-soon-footer svg { flex-shrink: 0; margin-top: 2px; color: var(--accent-warm); }
+
 /* ── RESPONSIVE ─────────────────────────────── */
 @media(max-width:640px){
   header,.hero,.controls,.grid { padding-left: 20px; padding-right: 20px; }
@@ -701,6 +865,12 @@ h1 em {
 </style>
 </head>
 <body>
+
+<!-- PREVIEW NOTICE -->
+<div class="preview-notice">
+  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+  <strong>Preview only</strong> - This page is for information purposes only. Booking buttons are not yet active. To get in touch in the meantime, please contact the Digital Education Team directly.
+</div>
 
 <!-- HEADER -->
 <header>
@@ -723,7 +893,30 @@ h1 em {
 <div class="hero">
   <div class="hero-eyebrow">Digital Master Classes</div>
   <h1>Learn something <em>new this term</em></h1>
-  <p class="hero-sub">Bespoke, co-delivered projects run by the Digital Education Team. We work with you to fit the project around your curriculum and your learners.</p>
+  <p class="hero-sub">Bespoke, co-delivered projects and digital learning resources from the Digital Education Team - built around your curriculum, your learners, and your goals.</p>
+</div>
+
+<!-- CUSTOM RESOURCE BANNER -->
+<div class="custom-resource-banner">
+  <div class="custom-resource-banner-inner">
+    <div class="custom-resource-banner-icon">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+    </div>
+    <div class="custom-resource-banner-text">
+      <strong>Want something built specifically for your area?</strong>
+      <span>Request a custom digital learning resource from us - bespoke, interactive, and built around your curriculum.</span>
+    </div>
+    <button class="custom-resource-banner-btn" onclick="openDetails('showcase')">
+      Find out more
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
+  </div>
+</div>
+
+<!-- SECTION: Master class taught sessions -->
+<div class="section-header">
+  <div class="section-title">Master class taught sessions</div>
+  <p class="section-sub">Co-delivered projects run in your classroom. We work with you to fit the project around your curriculum and your learners.</p>
 </div>
 
 <!-- CONTROLS -->
@@ -892,10 +1085,11 @@ h1 em {
   </div>
 
   <!-- CARD: Drone Flying -->
-  <div class="card" data-accent="teal" id="card-drone">
+  <div class="card" data-accent="teal" id="card-drone" style="opacity:0.75;">
     <div class="card-thumb">
       <div class="card-thumb-bg" style="background: linear-gradient(135deg, #0e7490 0%, #164e63 100%);"></div>
       <div class="card-thumb-overlay"></div>
+      <span class="coming-soon-badge">Coming Soon</span>
       <span class="duration-badge">⏱ Multi-session project</span>
     </div>
     <div class="card-divider"></div>
@@ -931,18 +1125,18 @@ h1 em {
     </div>
     <div class="card-footer">
       <div class="signup-group">
-        <button class="btn-signup details-btn" onclick="openDetails('drone')">
+        <button class="btn-signup details-btn" style="flex:1;" onclick="openDetails('drone')">
           More Details
         </button>
-        <button class="btn-signup request-btn" onclick="requestMeeting('Drone Flying & Geospatial Data')">
-          Request a Meeting
-        </button>
+      </div>
+      <div class="coming-soon-footer">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        This session is coming soon - we are currently finalising the equipment and logistics. Check back for updates.
       </div>
     </div>
   </div>
 
 </div><!-- /grid -->
-
 <!-- REQUEST A MEETING MODAL -->
 <div id="requestOverlay" onclick="closeRequestOutside(event)" style="display:none; position:fixed; top:0; left:0; right:0; bottom:0; z-index:10000; background:rgba(10,5,20,0.85); backdrop-filter:blur(10px); overflow-y:auto;">
   <div id="requestModal" style="width:580px; max-width:calc(100% - 48px); margin:60px auto 60px; background:var(--surface); border:1px solid var(--border); border-radius:24px; overflow:hidden; box-shadow:0 40px 100px rgba(0,0,0,0.5);">
@@ -1018,6 +1212,66 @@ h1 em {
   </div>
 </div>
 
+<!-- REQUEST A RESOURCE MODAL -->
+<div id="resourceOverlay" onclick="closeResourceOutside(event)" style="display:none; position:fixed; top:0; left:0; right:0; bottom:0; z-index:10000; background:rgba(10,5,20,0.85); backdrop-filter:blur(10px); overflow-y:auto;">
+  <div style="width:580px; max-width:calc(100% - 48px); margin:60px auto 60px; background:var(--surface); border:1px solid var(--border); border-radius:24px; overflow:hidden; box-shadow:0 40px 100px rgba(0,0,0,0.5);">
+
+    <div class="req-header">
+      <div class="req-header-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <div>
+        <div class="req-header-title">Request a Custom Resource</div>
+        <div class="req-header-sub">Digital Education Team</div>
+      </div>
+      <button class="req-close" onclick="closeResourceModal()">✕</button>
+    </div>
+
+    <div class="req-body">
+
+      <div class="resource-timeline-notice">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0; margin-top:2px;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        <div>
+          <strong>Please note development timelines</strong>
+          Bespoke digital learning resources typically take a minimum of 1 - 3 months to develop, depending on complexity. This will be discussed and agreed with you once an idea is in place and the planning stage is complete.
+        </div>
+      </div>
+
+      <div class="req-fields">
+
+        <div class="req-field">
+          <label class="req-label" for="res-name">Your Name <span class="req-required">*</span></label>
+          <input class="req-input" type="text" id="res-name" placeholder="e.g. Sarah Jones" autocomplete="name"/>
+        </div>
+
+        <div class="req-field">
+          <label class="req-label" for="res-email">Email Address <span class="req-required">*</span></label>
+          <input class="req-input" type="email" id="res-email" placeholder="your.name@weston.ac.uk" autocomplete="email"/>
+        </div>
+
+        <div class="req-field">
+          <label class="req-label" for="res-message">Tell us about the resource you have in mind <span class="req-required">*</span></label>
+          <textarea class="req-textarea" id="res-message" rows="6" placeholder="e.g. I teach Health & Social Care and I'd love an interactive resource that walks learners through a virtual home assessment. I want learners to be able to explore different rooms and identify care needs..."></textarea>
+        </div>
+
+        <div id="res-error" class="req-error" style="display:none;">
+          Please fill in all required fields before sending.
+        </div>
+
+      </div>
+    </div>
+
+    <div class="req-footer">
+      <button class="req-cancel-btn" onclick="closeResourceModal()">Cancel</button>
+      <button class="btn-signup request-btn" style="flex:1; font-size:15px; padding:13px 18px;" onclick="submitResource()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        Send Request
+      </button>
+    </div>
+
+  </div>
+</div>
+
 <!-- TOAST -->
 <div class="toast" id="toast"></div>
 
@@ -1038,6 +1292,35 @@ h1 em {
 <script>
 // ── Session detail data ──────────────────────────
 const sessionDetails = {
+  showcase: {
+    title: 'Digital Resources Showcase & Consultation',
+    image: '',
+    intro: `This isn't a training session or a course. It's a conversation. We'll show you some of the digital learning resources we've built recently - interactive, bespoke, and nothing like traditional e-learning - and talk through what we could create specifically for your area. Whether you're thinking about a particular unit that's hard to teach, a topic learners always struggle with, or just curious about what's possible, this is the session to start with. There's no fixed agenda and no obligation - just an honest discussion about how we can support your teaching with resources that are genuinely built around you.`,
+    collab: `We come to you. Book a 1-to-1 or bring your team - we'll fit around your timetable and come to wherever works best for you.`,
+    steps: [
+      { label: 'Part 1 - Showcase', detail: 'We walk you through a selection of recent bespoke digital resources, giving you a sense of what\'s possible and what\'s already been built across the college.' },
+      { label: 'Part 2 - Your Area', detail: 'We talk through your curriculum, your learners, and the gaps or challenges you want to address.' },
+      { label: 'Part 3 - Ideas & Next Steps', detail: 'We map out what a bespoke resource could look like for you and agree what happens next.' },
+    ],
+    requirements: [
+      'No preparation needed',
+      'Can be held in your office, classroom, or online',
+      'Around 1 hour - flexible to your availability',
+    ],
+    objectives: [
+      'See what genuinely bespoke digital learning resources look like in practice',
+      'Understand how these differ from off-the-shelf or traditional e-learning',
+      'Identify areas of your curriculum that could benefit from a digital resource',
+      'Leave with a clear idea of what a resource built for your area could look like',
+    ],
+    curriculum: [
+      { area: 'Teaching Staff', examples: 'Any area - if you deliver sessions and want to enhance them with something built specifically for your learners, this is for you' },
+      { area: 'Heads of Area', examples: 'Book for yourself or bring your team - a great way to open up the conversation across a whole department' },
+      { area: 'Curriculum Leads', examples: 'Explore how bespoke digital resources can support curriculum development and quality improvement' },
+      { area: 'Support Staff', examples: 'If you support learners in sessions and want to understand what digital tools are available, come along' },
+    ],
+    ctaNote: 'This is the best first step for anyone thinking about working with us. No commitment, no jargon - just a conversation.',
+  },
   excel: {
     title: 'Data Management, Manipulation & Presentation',
     image: "https://moodle.weston.ac.uk/learning_content/Digital Master classes/Directory/assets/data management.jpg",
@@ -1199,8 +1482,28 @@ function openDetails(id) {
   const d = sessionDetails[id];
   if (!d) return;
 
-  document.getElementById('modalHeroBg').style.backgroundImage = `url('${d.image}')`;
+  document.getElementById('modalHeroBg').style.backgroundImage = d.image ? `url('${d.image}')` : 'linear-gradient(135deg, #4c1d95 0%, #7c3aed 100%)';
   document.getElementById('modalHeroTitle').textContent = d.title;
+
+  // Showcase gets a simple conversational layout, not the accordion treatment
+  if (id === 'showcase') {
+    document.getElementById('modalBody').innerHTML = `
+      <p class="modal-intro">${d.intro}</p>
+      <p class="modal-intro" style="margin-top:-8px;">${d.collab}</p>
+      <div class="modal-collab">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        ${d.ctaNote}
+      </div>
+    `;
+    document.getElementById('modalFooter').innerHTML = `
+      <button class="btn-signup request-btn" style="flex:1; font-size:15px; padding:13px 18px;" onclick="closeModal(); requestResource()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        Request a Resource
+      </button>
+    `;
+    document.getElementById('modalOverlay').style.display = 'block';
+    return;
+  }
 
   const stepsHtml = `<div class="session-steps">${d.steps.map((s, i) => `
     <div class="session-step">
@@ -1229,12 +1532,15 @@ function openDetails(id) {
     </div>
   `;
 
-  document.getElementById('modalFooter').innerHTML = `
-    <button class="btn-signup request-btn" style="flex:1; font-size:15px; padding:13px 18px;" onclick="closeModal(); requestMeeting('${d.title}')">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-      Request a Meeting
-    </button>
-  `;
+  document.getElementById('modalFooter').innerHTML = id === 'drone'
+    ? `<div class="coming-soon-footer" style="flex:1;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        This session is coming soon - we are currently finalising the equipment and logistics. Check back for updates.
+      </div>`
+    : `<button class="btn-signup request-btn" style="flex:1; font-size:15px; padding:13px 18px;" onclick="closeModal(); requestMeeting('${d.title}')">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        Request a Meeting
+      </button>`;
 
   document.getElementById('modalOverlay').style.display = 'block';
 }
@@ -1245,7 +1551,13 @@ function closeModal() {
 function closeModalOutside(e) {
   if (e.target === document.getElementById('modalOverlay')) closeModal();
 }
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    closeModal();
+    closeRequestModal();
+    closeResourceModal();
+  }
+});
 
 // ── Search ───────────────────────────────────────
 function filterSearch(v) {
@@ -1262,15 +1574,26 @@ function filterSearch(v) {
   document.getElementById('count').textContent = visible;
 }
 
+// ── Request a Resource modal ─────────────────────
+function requestResource() {
+  showNotLive();
+}
+
+function closeResourceModal() {
+  document.getElementById('resourceOverlay').style.display = 'none';
+}
+function closeResourceOutside(e) {
+  if (e.target === document.getElementById('resourceOverlay')) closeResourceModal();
+}
+
+function submitResource() {
+  closeResourceModal();
+  showNotLive();
+}
+
 // ── Request a Meeting modal ──────────────────────
 function requestMeeting(sessionTitle) {
-  document.getElementById('reqSessionLabel').textContent = sessionTitle || 'Digital Master Classes';
-  // Clear previous values
-  ['req-name','req-role','req-email','req-area','req-message','req-timing'].forEach(id => {
-    document.getElementById(id).value = '';
-  });
-  document.getElementById('req-error').style.display = 'none';
-  document.getElementById('requestOverlay').style.display = 'block';
+  showNotLive();
 }
 
 function closeRequestModal() {
@@ -1281,41 +1604,18 @@ function closeRequestOutside(e) {
 }
 
 function submitRequest() {
-  const name    = document.getElementById('req-name').value.trim();
-  const role    = document.getElementById('req-role').value.trim();
-  const email   = document.getElementById('req-email').value.trim();
-  const area    = document.getElementById('req-area').value.trim();
-  const message = document.getElementById('req-message').value.trim();
-  const timing  = document.getElementById('req-timing').value.trim();
-  const session = document.getElementById('reqSessionLabel').textContent;
-
-  // Basic validation
-  if (!name || !role || !email || !message) {
-    document.getElementById('req-error').style.display = 'block';
-    return;
-  }
-  document.getElementById('req-error').style.display = 'none';
-
-  // ── PHP ENDPOINT — wire up when server is ready ──────────────────────────
-  // Replace the simulated section below with:
-  //
-  // fetch('https://moodle.weston.ac.uk/path/to/handler.php', {
-  //   method: 'POST',
-  //   headers: { 'Content-Type': 'application/json' },
-  //   body: JSON.stringify({ session, name, role, email, area, message, timing })
-  // })
-  // .then(res => res.json())
-  // .then(data => {
-  //   if (data.success) { showToast('✅ Request sent! We\'ll be in touch shortly.'); closeRequestModal(); }
-  //   else              { document.getElementById('req-error').textContent = data.error || 'Something went wrong.'; document.getElementById('req-error').style.display = 'block'; }
-  // })
-  // .catch(() => { document.getElementById('req-error').textContent = 'Could not connect. Please try again.'; document.getElementById('req-error').style.display = 'block'; });
-  //
-  // ────────────────────────────────────────────────────────────────────────
-
-  // Simulated success (remove when PHP endpoint is live)
   closeRequestModal();
-  showToast('✅ Request sent! We\'ll be in touch shortly.');
+  showNotLive();
+}
+
+function showNotLive() {
+  const t = document.getElementById('toast');
+  t.style.background = '#dc2626';
+  t.style.borderColor = 'rgba(220,38,38,0.4)';
+  t.textContent = '⚠️ Booking is not yet live — this page is for information only. Check back soon.';
+  t.classList.add('show');
+  clearTimeout(window._toastT);
+  window._toastT = setTimeout(() => t.classList.remove('show'), 5000);
 }
 
 function showToast(msg) {
