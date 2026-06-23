@@ -732,7 +732,7 @@ h1 em {
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
     <input class="search" type="text" placeholder="Search sessions…" oninput="filterSearch(this.value)"/>
   </div>
-  <div class="count-badge">Showing <strong id="count">1</strong> session</div>
+  <div class="count-badge">Showing <strong id="count">2</strong> sessions</div>
 </div>
 
 <!-- GRID -->
@@ -785,6 +785,57 @@ h1 em {
           More Details
         </button>
         <button class="btn-signup request-btn" onclick="requestMeeting('Virtual Reality with ThingLink')">
+          Request a Meeting
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD: Digital Content Creation / Adobe Express -->
+  <div class="card" data-accent="orange" id="card-adobe">
+    <div class="card-thumb">
+      <div class="card-thumb-bg" style="background-image: url('https://moodle.weston.ac.uk/learning_content/Digital Master classes/Directory/assets/adobe express.jpg'); background-size: cover; background-position: center;"></div>
+      <div class="card-thumb-overlay"></div>
+      <span class="duration-badge">⏱ Multi-session project</span>
+    </div>
+    <div class="card-divider"></div>
+    <div class="card-body">
+      <div class="card-title">Digital Content Creation with Adobe Express</div>
+      <p class="card-intro">A collaborative, co-delivered project giving vocational and trade learners a real career advantage — designing professional marketing materials using photos and videos of their own college work. From logos to animated TikTok adverts, every learner leaves with assets they can use.</p>
+      <div class="detail-section">
+        <div class="collab-banner">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          You bring the subject knowledge — we bring the tech and the teaching support
+        </div>
+        <div>
+          <div class="detail-heading">Curriculum ideas</div>
+          <div class="curriculum-tags">
+            <span class="curr-tag">Hair &amp; Beauty</span>
+            <span class="curr-tag">Catering</span>
+            <span class="curr-tag">Automotive</span>
+            <span class="curr-tag">Construction</span>
+            <span class="curr-tag">Health &amp; Social Care</span>
+            <span class="curr-tag">Business &amp; Travel</span>
+          </div>
+        </div>
+      </div>
+      <div class="meta-row">
+        <div class="meta-chip">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          Whole class groups
+        </div>
+        <div class="meta-chip">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          Up to <strong>3 sessions</strong>
+        </div>
+      </div>
+    </div>
+    <div class="card-footer">
+      <div class="signup-group">
+        <button class="btn-signup details-btn" onclick="openDetails('adobe')">
+          More Details
+        </button>
+        <button class="btn-signup request-btn" onclick="requestMeeting('Digital Content Creation with Adobe Express')">
           Request a Meeting
         </button>
       </div>
@@ -921,6 +972,36 @@ const sessionDetails = {
       { area: 'Public Services', examples: 'Interactive crime scene' },
       { area: 'IT', examples: 'Server room walk-through' },
       { area: 'Catering', examples: '360° kitchen inspection, interactive how-to resources' },
+    ],
+    ctaNote: 'During our initial chat, we will look at your units throughout the year and map out how this project can fit into your teaching — supporting key future skills such as digital literacy, project management and presentation.',
+  },
+  adobe: {
+    title: 'Digital Content Creation with Adobe Express',
+    image: "https://moodle.weston.ac.uk/learning_content/Digital Master classes/Directory/assets/adobe express.jpg",
+    intro: `This is a collaborative, co-delivered classroom project designed to give your vocational and trade learners a genuine career advantage. Students will learn the business and marketing skills required to operate as a successful sole trader or start-up — moving from initial concept to finished digital creation. Using photos and videos of real work they have done in college, learners will design logos, social media adverts, and animated video content for TikTok or Reels. Every learner walks away with assets they can use to boost their CV, secure apprenticeships, or launch their own business.`,
+    collab: `The Digital Education Team will co-deliver this project with you. You bring the subject knowledge — we bring the tech and the teaching support, joining you in the classroom to help facilitate the project over as many sessions as needed.`,
+    steps: [
+      { label: 'Session 1: Branding & Logo Design (Led by DET)', detail: 'Learners look at real-world trade branding, learn about colour psychology, and design a clean, professional company logo in Adobe Express.' },
+      { label: 'Session 2: The Social Media Launch (Co-led)', detail: 'Learners photograph their practical college work and turn it into a crisp, professional Facebook or Instagram advert.' },
+      { label: 'Session 3: Animation & TikTok/Reels (Co-led)', detail: 'Learners transform their static graphics into animated video assets using one-click motion effects and timeline controls.' },
+    ],
+    requirements: [
+      'A computer room or laptops — one device per learner',
+      'Adobe accounts (free tier)',
+      'Photos or videos of project work (can be provided if needed)',
+    ],
+    objectives: [
+      'Explain the purpose of commercial branding — trust, memory, recognition — and identify industry-appropriate colour psychology',
+      'Design a clean logo using text and geometric shapes in Adobe Express',
+      'Construct a promotional social media advert featuring a practical photo with strong text hierarchy',
+      'Transform a static advert into an animated video asset using motion effects and timeline controls',
+    ],
+    curriculum: [
+      { area: 'Hair, Beauty & Catering', examples: 'Logo for a mobile salon or pop-up restaurant, promotional Instagram post using their best styling or culinary work' },
+      { area: 'Automotive', examples: 'Brand a tuning or repair shop, animated TikTok showing a repair process' },
+      { area: 'Construction & Trades', examples: 'Brand a local trade business, ad highlighting work or DIY/safety tips' },
+      { area: 'Health, Social Care & Early Years', examples: 'Brand a childminding business or create a community health campaign' },
+      { area: 'Business, Travel & Tourism', examples: 'Marketing campaign for a travel niche using promotional brochures and TikTok videos' },
     ],
     ctaNote: 'During our initial chat, we will look at your units throughout the year and map out how this project can fit into your teaching — supporting key future skills such as digital literacy, project management and presentation.',
   }
